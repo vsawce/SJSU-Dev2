@@ -3,8 +3,6 @@
 #include <cstdint>
 #include <initializer_list>
 
-#include "config.hpp"
-
 #include "utility/status.hpp"
 #include "utility/units.hpp"
 
