@@ -32,6 +32,11 @@ struct sjtwo // NOLINT
   inline static sjsu::lpc40xx::Gpio led2 = sjsu::lpc40xx::Gpio(1, 24);
   inline static sjsu::lpc40xx::Gpio led3 = sjsu::lpc40xx::Gpio(1, 18);
 
+  inline static sjsu::lpc40xx::Gpio button0 = sjsu::lpc40xx::Gpio(1, 19);
+  inline static sjsu::lpc40xx::Gpio button1 = sjsu::lpc40xx::Gpio(1, 15);
+  inline static sjsu::lpc40xx::Gpio button2 = sjsu::lpc40xx::Gpio(0, 30);
+  inline static sjsu::lpc40xx::Gpio button3 = sjsu::lpc40xx::Gpio(0, 29);
+
   [[gnu::always_inline]] inline static sjsu::Graphics & Oled()
   {
     static sjsu::lpc40xx::Gpio oled_cs = sjsu::lpc40xx::Gpio(1, 22);
