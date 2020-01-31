@@ -14,6 +14,7 @@
 #include "utility/debug.hpp"
 #include "utility/macros.hpp"
 #include "utility/time.hpp"
+#include "utility/status.hpp"
 
 /// SJ2_LOG_FUNCTION is an alias of __PRETTY_FUNCTION__ in the event we would
 /// like to switch the function to something else.
@@ -83,10 +84,21 @@
 #define SJ2_RETURN_IF(condition, warning_message, ...)             \
   do                                                               \
   {                                                                \
-    if ((condition))                                              \
+    if ((condition))                                               \
     {                                                              \
       LOG_WARNING(warning_message SJ2_COLOR_RESET, ##__VA_ARGS__); \
     }                                                              \
+  } while (0)
+
+/// Logs the expression if it returns any but Status::kSuccess
+#define LOG_ON_FAILURE(expression)                       \
+  do                                                     \
+  {                                                      \
+    sjsu::Status log_on_failure_status = (expression);   \
+    if (log_on_failure_status != sjsu::Status::kSuccess) \
+    {                                                    \
+      LOG_WARNING("Expression Failed: %s", #expression); \
+    }                                                    \
   } while (0)
 
 /// When the condition is false, issue a critical level message to the user and
